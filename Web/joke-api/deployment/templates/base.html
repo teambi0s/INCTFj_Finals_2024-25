@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ title }}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            background: #f0f4f8;
+            color: #333;
+            line-height: 1.6;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background: linear-gradient(135deg, #6f42c1, #5e72e4);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            font-size: 2.4rem;
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        footer {
+            background: #5e72e4;
+            color: white;
+            padding: 1.2rem;
+            text-align: center;
+            margin-top: auto;
+            font-size: 0.9rem;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 3rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .container:hover {
+            box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        a {
+            color: #5e72e4;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #4b60d0;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #5e72e4;
+            color: white;
+            padding: 0.8rem 1.6rem;
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #4b60d0;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        pre, code {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+            background-color: #f4f7fc;
+            padding: 1.2rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            overflow-wrap: break-word;
+        }
+
+        code {
+            background-color: transparent !important;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .container {
+                padding: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            .container {
+                padding: 1.2rem;
+                margin: 1rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ title }}</h1>
+    </header>
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <footer>
+        &copy; 2024 Joke API | Powered by Flask
+    </footer>
+</body>
+</html>

@@ -1,0 +1,3 @@
+Flask
+pyjwt==1.5.0
+cryptography==2.6.1

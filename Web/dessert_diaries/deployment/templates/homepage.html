@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dessert Diaries</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .parallax {
+            background-image: url('/static/berry.jpg'); 
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 700px;
+        }
+    </style>
+</head>
+<body class="bg-blue-50 text-gray-800">
+
+
+    <section class="parallax flex items-center justify-center m-screen">
+        <h1 class="text-8xl font-bold text-center text-white shadow-lg">The Dessert Diaries</h1>
+    </section>
+
+    <section class="bg-white py-16">
+        <div class="container mx-auto text-center">
+            <h2 class="text-3xl font-semibold text-gray-800">Sweet Recipes</h2>
+            <p class="text-gray-600 mt-4">Explore a wide variety of irresistible sweet treats that are sure to satisfy your cravings!</p>
+        </div>
+    </section>
+
+
+    <section class="py-12">
+        <div class="container mx-auto">
+            <h2 class="text-2xl font-bold text-center text-gray-800 mb-8">Featured Sweet Recipes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                 <a href="/recipe/Jalebi">
+                    <div class="relative group">
+                        <img src="/static/Jalebi.webp" alt="Jalebi" class="w-full h-56 object-cover rounded-lg shadow-lg">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
+                            <span class="text-white text-lg font-bold">Jalebi Recipe</span>
+                        </div>
+                    </div>
+                 </a>
+                <!-- Card 2 -->
+                 <a href="/recipe/croissant">
+                    <div class="relative group">
+                        <img src="/static/croissant.jpg" alt="Croissant" class="w-full h-56 object-cover rounded-lg shadow-lg">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
+                            <span class="text-white text-lg font-bold">Croissant Recipe</span>
+                        </div>
+                    </div>
+                 </a>
+                <!-- Card 3 -->
+                <a href="/recipe/macaron">
+                    <div class="relative group">
+                        <img src="/static/macaron.jpg" alt="Macaron" class="w-full h-56 object-cover rounded-lg shadow-lg">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
+                            <span class="text-white text-lg font-bold">Macaron Recipe</span>
+                        </div>
+                    </div>
+                </a>
+                <!-- Card 4 -->
+                 <a href="/recipe/doughnut">
+                    <div class="relative group">
+                        <img src="/static/doughnut.jpg" alt="Doughnut" class="w-full h-56 object-cover rounded-lg shadow-lg">
+                        <div class="absolute inset-0 bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex justify-center items-center">
+                            <span class="text-white text-lg font-bold">Doughnut Recipe</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-100 py-12">
+        <div class="container mx-auto text-center">
+            <h2 class="text-2xl font-bold text-gray-800">Share Your Favorite Sweet Recipe</h2>
+            <p class="text-gray-600 mt-2">We love discovering new sweet creations! Share your recipe or any sweet tips you have with us.</p>
+            <form action="/share" method="POST" class="mt-6 flex flex-col md:flex-row justify-center items-center">
+                <input type="text" name="name" placeholder="Your Name" required class="w-full md:w-1/3 p-2 border rounded-md mb-4 md:mb-0 md:mr-4">
+                <input type="email" name="email" placeholder="Your Email" required class="w-full md:w-1/3 p-2 border rounded-md mb-4 md:mb-0 md:mr-4">
+                <textarea name="message" placeholder="Your Recipe or Message" required class="w-full md:w-1/3 p-2 border rounded-md mb-4 md:mb-0 md:mr-4"></textarea>
+                <button type="submit" class="bg-pink-500 text-white px-6 py-2 rounded-lg">Send Recipe</button>
+            </form>
+        </div>
+    </section>
+
+
+    <footer class="bg-gray-800 text-white py-6">
+        <p class="text-center">© 2025 The Dessert Diaries. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>

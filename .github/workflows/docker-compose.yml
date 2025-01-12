@@ -1,0 +1,54 @@
+name: Docker Image CI
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@v37
+      
+    - name: List changed
+      run: |
+        for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+          echo "$file was changed"
+        done
+    
+    - name: Log in to registry
+        # This is where you will update the personal access token to GITHUB_TOKEN
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+    
+    
+    - name: Build and push the Docker image
+      run: |
+        declare -a built_images=()
+        for file in ${{ steps.changed-files.outputs.all_changed_files }}; do
+          if [[ "$file" =~ ^(Pwn|Web)/[a-zA-Z0-9_-]+/deployment/.+ ]]; then
+            IMAGE_NAME=$(echo -n $file | cut -d "/" -f2)
+            NORM_IMAGE_NAME=$(echo $IMAGE_NAME | tr A-Z a-z | tr - _)
+            CATEGORY=$(echo -n $file | cut -d "/" -f1)
+            if [[ " ${built_images[*]} " != *" $IMAGE_NAME "* ]]; then
+              echo "building and pushing: $CATEGORY/$IMAGE_NAME/deployment/"
+              docker build $CATEGORY/$IMAGE_NAME/deployment/ --tag $NORM_IMAGE_NAME
+              built_images+=("$NORM_IMAGE_NAME")
+              IMAGE_ID=ghcr.io/guzzwho/$NORM_IMAGE_NAME 
+              echo "pushing to $IMAGE_ID"
+              VERSION=latest
+              docker tag $NORM_IMAGE_NAME $IMAGE_ID:$VERSION
+              docker push $IMAGE_ID:$VERSION
+            else echo "already built $NORM_IMAGE_NAME"
+            fi
+          fi
+        done

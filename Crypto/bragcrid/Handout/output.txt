@@ -1,0 +1,3 @@
+encrypted message1 b'0a1c0a1602181a1318'
+encrypted message2 b'00000000000000000a'
+flag=??

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .parallax {
+            background-image: url('/static/berry.jpg');
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 700px;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans">
+
+    <section class="parallax flex items-center justify-center">
+        <h1 class="text-8xl font-bold text-center text-white shadow-lg">{{ recipe_name | upper }}</h1>
+    </section>
+
+ 
+    <div class="max-w-4xl mx-auto p-8 mt-10 bg-white shadow-lg rounded-lg">
+        <h2 class="text-4xl font-bold text-gray-800 mb-6">Recipe Details</h2>
+        <p class="text-lg text-gray-700 mb-8 leading-relaxed">Here is the recipe for <span class="font-semibold">{{ recipe_name }}</span>.</p>
+
+       
+        <section>
+            <h3 class="text-3xl font-semibold text-gray-800 mb-5">Ingredients</h3>
+            <ul class="list-disc list-inside space-y-3 text-lg text-gray-700">
+                {% for ingredient in ingredients %}
+                <li>{{ ingredient }}</li>
+                {% endfor %}
+            </ul>
+        </section>
+
+        <section class="mt-10">
+            <h3 class="text-3xl font-semibold text-gray-800 mb-5">Instructions</h3>
+            <ol class="list-decimal list-inside space-y-4 text-lg text-gray-700 leading-relaxed">
+                {% for step in instructions %}
+                <li>{{ step }}</li>
+                {% endfor %}
+            </ol>
+        </section>
+
+    </div>
+
+
+    <section class="bg-blue-100 py-14 mt-14">
+        <div class="container mx-auto text-center">
+            <h2 class="text-4xl font-bold text-gray-800">Try More Recipes!</h2>
+            <p class="text-lg text-gray-700 mt-4">Discover more delicious creations</p>
+            <a href="/" class="mt-6 inline-block bg-pink-500 text-white text-lg px-8 py-4 rounded-lg shadow-md hover:bg-pink-600 transition">
+                Explore Recipes
+            </a>
+        </div>
+    </section>
+
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p class="text-lg">© 2025 The Dessert Diaries. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
